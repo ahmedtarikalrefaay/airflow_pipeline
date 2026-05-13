@@ -1,45 +1,158 @@
-Overview
-========
+# 🚀 Airflow ETL Pipeline
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+An end-to-end ETL pipeline built using Apache Airflow for orchestrating, scheduling, and monitoring data workflows.
 
-Project Contents
-================
+---
 
-Your Astro project contains the following files and folders:
+## 📌 Project Overview
 
-- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes one example DAG:
-    - `example_astronauts`: This DAG shows a simple ETL pipeline example that queries the list of astronauts currently in space from the Open Notify API and prints a statement for each astronaut. The DAG uses the TaskFlow API to define tasks in Python, and dynamic task mapping to dynamically print a statement for each astronaut. For more on how this DAG works, see our [Getting started tutorial](https://www.astronomer.io/docs/learn/get-started-with-airflow).
-- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
-- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
-- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
-- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
-- plugins: Add custom or community plugins for your project to this file. It is empty by default.
-- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+This project demonstrates how to automate ETL workflows using Apache Airflow.
 
-Deploy Your Project Locally
-===========================
+The pipeline performs:
 
-Start Airflow on your local machine by running 'astro dev start'.
+- Data Extraction
+- Data Transformation
+- Data Loading
+- Workflow Automation
+- Task Monitoring
 
-This command will spin up five Docker containers on your machine, each for a different Airflow component:
+---
 
-- Postgres: Airflow's Metadata Database
-- Scheduler: The Airflow component responsible for monitoring and triggering tasks
-- DAG Processor: The Airflow component responsible for parsing DAGs
-- API Server: The Airflow component responsible for serving the Airflow UI and API
-- Triggerer: The Airflow component responsible for triggering deferred tasks
+## 🛠️ Tech Stack
 
-When all five containers are ready the command will open the browser to the Airflow UI at http://localhost:8080/. You should also be able to access your Postgres Database at 'localhost:5432/postgres' with username 'postgres' and password 'postgres'.
+- Python
+- Apache Airflow
+- Pandas
+- Docker
+- PostgreSQL
+- SQL
 
-Note: If you already have either of the above ports allocated, you can either [stop your existing Docker containers or change the port](https://www.astronomer.io/docs/astro/cli/troubleshoot-locally#ports-are-not-available-for-my-local-airflow-webserver).
+---
 
-Deploy Your Project to Astronomer
-=================================
+## 📂 Project Structure
 
-If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://www.astronomer.io/docs/astro/deploy-code/
+```bash
+airflow_pipeline/
+│
+├── dags/                 # Airflow DAG definitions
+├── scripts/              # ETL scripts
+├── data/                 # Raw and processed datasets
+├── logs/                 # Airflow logs
+├── plugins/              # Custom plugins/operators
+├── docker-compose.yml    # Docker services configuration
+├── requirements.txt      # Python dependencies
+└── README.md
+```
 
-Contact
-=======
+---
 
-The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
+## ⚙️ Pipeline Workflow
+
+### 1️⃣ Extract
+- Read data from multiple sources
+- Validate source availability
+
+### 2️⃣ Transform
+- Clean missing values
+- Remove duplicates
+- Convert data types
+- Apply business rules
+
+### 3️⃣ Load
+- Load transformed data into the target database
+- Validate inserted records
+
+### 4️⃣ Orchestration
+- Schedule workflows using Airflow
+- Retry failed tasks automatically
+- Monitor execution from Airflow UI
+
+---
+
+## 🐳 Running the Project with Docker
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/ahmedtarikalrefaay/airflow_pipeline.git
+cd airflow_pipeline
+```
+
+### 2️⃣ Start Services
+
+```bash
+docker compose up -d
+```
+
+### 3️⃣ Open Airflow UI
+
+```bash
+http://localhost:8080
+```
+
+### Default Credentials
+
+```bash
+Username: airflow
+Password: airflow
+```
+
+---
+
+## ▶️ Running the DAG
+
+1. Open Airflow UI
+2. Enable the DAG
+3. Trigger the pipeline
+4. Monitor tasks from Graph View
+
+---
+
+## 📊 Features
+
+- ✅ Automated ETL Pipeline
+- ✅ Dockerized Environment
+- ✅ Airflow DAG Scheduling
+- ✅ Logging & Monitoring
+- ✅ Retry & Failure Handling
+- ✅ Modular Architecture
+
+---
+
+## 🔧 Future Improvements
+
+- Kafka Integration
+- Spark Processing
+- Data Validation Layer
+- Kubernetes Deployment
+- CI/CD Integration
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+### Steps:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a Pull Request
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Ahmed Tarik Alrefaay**
+
+### GitHub
+https://github.com/ahmedtarikalrefaay
+
+### Repository
+https://github.com/ahmedtarikalrefaay/airflow_pipeline
